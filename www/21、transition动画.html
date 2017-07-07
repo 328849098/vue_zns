@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+.div1{width:100px;height:100px;background:#f00;}
+.fade-transition{transition:1s all ease;}
+.fade-enter{opacity:0;}
+.fade-leave{opacity:0;transform:translateX(200px);}
+</style>
+<script>
+/*
+bower 查看版本 类似npm，包管理器，偏向前端
+      npm install bower -g   下载
+      验证：bower --version
+
+ bower install <包名>      下载           bower install vue#1.0.28
+ bower uninstall <包名>    卸载
+ bower info <包名>         查看包版本信息   bower info vue
+
+---------------------------------------------------------
+
+vue -> 过渡（动画）
+ transition
+ 进入：fade-enter
+ 离开：fade-leave
+*/
+window.onload=function(){
+    var vm=new Vue({
+        data:{
+            bSign:true
+        },
+        methods:{
+            /*
+             toggle:function () {
+             alert(1);
+             }
+            */
+            toggle(){   //ES6语法
+                this.bSign=!this.bSign;
+            }
+        }
+    }).$mount('#box');
+}
+</script>
+</head>
+<body>
+<div id="box">
+  <input type="button" value="按钮" @click="toggle">
+  <div class="div1" v-show="bSign" transition="fade"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+zns-red{width:100px;height:100px;background:#f00;display:block;}
+</style>
+<script>
+/*
+ directive 自定义指令    扩展了html语法
+ 元素指令 elementDirective
+ */
+    window.onload=function(){
+        Vue.directive('red',{
+            bind:function () {
+                this.el.style.background='#0f0';
+            }
+        });
+        var vm=new Vue({
+            data:{
+            }
+        }).$mount('#box');
+
+    }
+</script>
+</head>
+<body>
+<div id="box">
+  <span v-red>welcome vue</span
+</div>
+
+</body>
+</html>

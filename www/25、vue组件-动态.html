@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+</style>
+<script>
+/*
+vue组件  （元素指令 elementDirective :用处不大。）
+动态组件：<component :is="组件名称"></component>
+*/
+
+//slot
+//vue-loader
+//vue-router
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            a:'aaa'
+        },
+        components:{
+            'aaa':{
+                template:'<h2>我是aaa组件</h2>'
+            },
+            'bbb':{
+                template:'<h2>我是bbb组件</h2>'
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+  <input type="button" value="aaa组件" @click="a='aaa'">
+  <input type="button" value="bbb组件" @click="a='bbb'">
+  <component :is="a"></component>
+</div>
+
+</body>
+</html>

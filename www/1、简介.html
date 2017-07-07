@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//vue读音：view
+//官网：https://cn.vuejs.org
+//手册：https://cn.vuejs.org/v2/api/
+
+//https://github.com
+//vue:star 56835
+//angularjs:star 24970
+
+//v-model
+window.onload=function(){
+    var vm=new Vue({
+        el:'#box',
+        data:{
+            msg:'welcome vue'
+        },
+        methods:{
+
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="msg">
+    {{msg}}
+</div>
+</body>
+</html>

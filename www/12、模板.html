@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//{{*}} 只绑定一次
+//{{{}}} html转义输出   <h3>标题</h3>
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            msg:12
+        },
+        methods:{
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="msg">
+    <br>
+    {{msg}}
+    <br>
+    {{*msg}}
+    <br>
+    {{{msg}}}
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+zns-red{width:100px;height:100px;background:#f00;display:block;}
+</style>
+<script>
+/*
+ directive 自定义指令    扩展了html语法
+ 自定义键盘：Vue.directive('on').keyCodes.ctrl=17;
+ debounce 延迟执行
+ */
+/*
+document.onkeydown=function (ev) {
+    alert(ev.keyCode);    //ctrl  -> 17
+}
+*/
+    window.onload=function(){
+        Vue.directive('on').keyCodes.ctrl=17;
+        Vue.directive('on').keyCodes.myenter=13;
+        var vm=new Vue({
+            data:{
+            },
+            methods:{
+                show:function () {
+                    alert(1);
+                }
+            }
+        }).$mount('#box');
+
+    }
+</script>
+</head>
+<body>
+<div id="box">
+  <input type="text" @keydown.enter="show">
+  <input type="text" @keydown.myenter="show">
+  <input type="text" @keydown.17="show">
+  <input type="text" @keydown.ctrl="show | debounce 2000">
+</div>
+
+</body>
+</html>

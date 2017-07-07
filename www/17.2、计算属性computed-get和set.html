@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//???
+/*
+ng:$scope.$watch
+------------------
+计算属性的使用：
+        computed 里面可以放置一些业务逻辑代码，一定记得return
+
+
+ b:{
+     get:function () {   //默认
+         return xxx;
+     },
+     set:function (val) {   //赋值
+         this.a=val;
+     }
+}
+
+ */
+    window.onload=function(){
+        var vm=new Vue({
+            el:'#box',
+            data:{
+                a:1
+            },
+            computed:{
+                b:{
+                    get:function () {   //默认
+                        return this.a+2;    //a:1,b:3
+                    },
+                    set:function (val) {   //赋值
+                        //alert(val);   //10
+                        this.a=val;     //a:10,b:12
+                    }
+                }
+            }
+        });
+
+        alert(vm.b);     //3
+        document.onclick=function () {
+            vm.b=10;
+        };
+    }
+</script>
+</head>
+<body>
+<div id="box">
+  a:{{a}}, b:{{b}}
+</div>
+
+</body>
+</html>

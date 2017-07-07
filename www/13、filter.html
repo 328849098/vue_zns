@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//{{'welcome'}}  可直接放数据
+
+//filter
+//msg | filterA | filterB  多个过滤器
+
+
+//capitalize 首字母大写
+//currency '￥' 3   货币
+//pluralize
+
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+        },
+        methods:{
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    {{'welcome'|uppercase}}
+    <br>
+    {{'WELcome'|lowercase}}
+    <br>
+    {{'WELcome'|lowercase|capitalize}}
+    <br>
+    {{12|currency '￥' 3}}
+</div>
+</body>
+</html>

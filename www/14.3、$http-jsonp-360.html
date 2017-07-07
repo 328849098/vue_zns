@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.js"></script>
+
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮" @click="jsonp()">
+</div>
+
+
+<script>
+    //$http
+
+    //jsonp
+    //https://sug.so.360.cn/suggest?callback=suggest_so&encodein=utf-8&encodeout=utf-8&format=json&fields=word&word=aaa&sid=972c742744a13e7ee48349531005ba9d&pq=aaa
+    //https://sug.so.360.cn/suggest?callback=suggest_so&word=a
+    // suggest_so({q:"a",p:true,s:["爱奇艺","阿里巴巴批发网","阿里巴巴","acfun","a站","angelababy","a直播","爱情保卫战","安全教育平台","a4yy"]});
+    window.onload=function(){
+        new Vue({
+            el:'#box',
+            data:{
+            },
+            methods:{
+                jsonp:function () {
+                    this.$http.jsonp('https://sug.so.360.cn/suggest',{
+                        params:{
+                            word:'a'
+                        }
+                    }).then(function (res) {
+                        //alert(res.data.s);
+                        qqw = JSON.parse(res.bodyText).s;
+                        alert(qqw);
+                    },function (res) {
+                        alert(res.status);
+                    })
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

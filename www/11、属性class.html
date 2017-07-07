@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<style>
+.red{color:#f00;}
+.blue{background:#00f;}
+</style>
+<script src="js/vue.min.js"></script>
+<script>
+/*
+:class='[red]'   //red是数据
+:class='[red,b,c,d]'
+:class='{red:a,blue:false}'
+:class='json'
+data:{
+    json:{
+        red:true,
+        blue:true
+    }
+}
+
+---------------------------
+ :style=''
+ :style="[c]"
+ :style="[c，b]"  //复合样式，采用驼峰命名法
+ style="json"
+ data:{
+     json:{
+         color:'red',
+         backgroundColor:'blue'
+     }
+ }
+
+*/
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            red:'red',
+            d:'blue',
+            a:true,
+            b:true,
+            json:{
+                red:true,
+                blue:true
+            }
+        },
+        methods:{
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <strong :class="[red]">文字</strong>
+    <strong :class="[red,d]">文字</strong>
+    <strong :class="{red:true,blue:false}">文字</strong>
+    <strong :class="{red:a,blue:b}">文字</strong>
+    <strong :class="json">文字</strong>
+</div>
+</body>
+</html>

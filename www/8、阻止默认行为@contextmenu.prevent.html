@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//默认行为、默认事件
+//阻止默认行为：1）ev.preventDefault();
+//            2)@contextmenu.prevent='' 推荐
+//右键菜单
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+
+        },
+        methods:{
+            show:function (ev) {
+                alert(1);
+                //ev.preventDefault();  //阻止默认行为
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮" @contextmenu.prevent="show($event)">
+</div>
+</body>
+</html>

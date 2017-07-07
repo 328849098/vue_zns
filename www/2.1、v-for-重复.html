@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//v-for
+//track-by="索引"   可添加重复数据     ng  ->  track by
+//track-by="$index/uid"
+window.onload=function(){
+    var c=new Vue({
+        data:{
+            arr:['apple','banner','orange','pear'],
+            json:{a:'apple',b:'banner',c:'orange'}
+        },
+        methods:{
+            add:function () {
+                //this.arr.push('tomato');
+                this.json['d']='tomato';  //json本质上是一个对象，没有push方法，push是数组方法
+                console.log(this.json.d);
+            }
+        }
+    }).$mount('#box');
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="button" @click="add" value="按钮">
+    <ul>
+        <li v-for="value in arr" track-by="$index">{{value}} {{$index}}</li>
+    </ul>
+    <ul>
+        <li v-for="(k,v) in json" track-by="$index">{{k}} {{v}} {{$index}} {{$key}}</li>
+    </ul>
+</div>
+</body>
+</html>

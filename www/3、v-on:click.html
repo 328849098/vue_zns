@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//v-on:click  简写: @click
+//mouseover mouseout   mousedown mouseup dblclick
+window.onload=function(){
+    var c=new Vue({
+        el:'#box',
+        data:{
+            msg:'welcome vue',
+            arr:['apple','banner','orange','pear'],
+            json:{a:'apple',b:'banner',c:'orange'}
+        },
+        methods:{
+            add:function () {
+                this.arr.push('tomato');
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮" v-on:click="add()">
+    <input type="button" value="按钮2" @click="add()">
+    <ul>
+        <li v-for="value in arr">{{value}}</li>
+    </ul>
+</div>
+</body>
+</html>

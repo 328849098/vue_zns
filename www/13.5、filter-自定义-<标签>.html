@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//过滤器：
+        //vue提供过滤器：
+                //capitalize     uppercase       lowercase
+                //debounce   配合事件，延迟执行
+        //数据配合使用过滤器：
+                //limitBy  限制几个
+                //filterBy 过滤数据
+                //orderBy  排序    (1正序、-1倒序)
+        //自定义过滤器：
+                //Vue.filter
+window.onload=function(){
+    Vue.filter('filterHtml',function (input) {
+        return input.replace(/<[^<]+>/g,'');
+    });
+    new Vue({
+        el:'#box',
+        data:{
+            msg:'<strong>welcome</strong>'
+        },
+        methods:{
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="msg | filterHtml">
+    <div v-html="msg"></div>
+</div>
+</body>
+</html>

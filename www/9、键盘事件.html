@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//ev.keyCode
+//@keydown  @keyup
+//常用键：
+//1) 回车：@keydown.13
+//          @keydown.enter
+//2)上下左右：up 、 down、left、right
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+        },
+        methods:{
+            show:function (ev) {
+                alert(ev.keyCode);
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="text" @keydown="show($event)">
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+/*
+ directive 自定义指令    扩展了html语法
+ 指令必需以v-开头
+ */
+    window.onload=function(){
+        Vue.directive('red',function () {
+            this.el.style.background='#f00';
+        });
+        var vm=new Vue({
+            data:{
+                msg:'welcome'
+            }
+        }).$mount('#box');
+
+    }
+</script>
+</head>
+<body>
+<div id="box">
+  <span v-red>{{msg}}</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//v-for
+window.onload=function(){
+    var c=new Vue({
+        el:'#box',
+        data:{
+            msg:'welcome vue',
+            arr:['apple','banner','orange','pear'],
+            json:{a:'apple',b:'banner',c:'orange'}
+        },
+        methods:{
+            
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="text" v-model="msg">
+    {{msg}} {{arr}} {{json}}
+    <ul>
+        <li v-for="value in arr">{{value}} {{$index}}</li>
+    </ul>
+    <ul>
+        <li v-for="(k,v) in json">{{k}} {{v}} {{$index}} {{$key}}</li>
+    </ul>
+</div>
+</body>
+</html>

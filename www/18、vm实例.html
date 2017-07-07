@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+/*
+ vm.$el   就是元素
+ vm.$data  就是数据
+ vm.$mount()  手动挂载       ng   ->   angular.bootstrap 引导
+ vm.$options  获取自定义属性
+ vm.$detroy   销毁对象
+ vm.$log()     查看现在数据的状态
+ */
+    window.onload=function(){
+        var vm=new Vue({
+            aa:11,    //自定义属性
+            show:function () {  //自定义属性
+              alert(1);
+            },
+            data:{
+                a:1,
+                b:2
+            }
+        }).$mount('#box');  //手动挂载
+
+        //console.log(vm.$el);  //<div id="box">1</div>
+        //vm.$el.style.background='#f00';
+
+        //console.log(vm.$data.a);  //1
+
+
+        //console.log(vm.$options.aa);  //11
+        //vm.$options.show();      //1
+
+        vm.$log();            //Object {a: 1, b: 2}
+
+    }
+</script>
+</head>
+<body>
+<div id="box">
+  {{a}}
+  <br>
+  {{aa}}
+</div>
+
+</body>
+</html>

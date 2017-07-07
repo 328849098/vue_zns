@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//过滤器：
+        //vue提供过滤器：
+                //capitalize     uppercase       lowercase
+                //debounce   配合事件，延迟执行
+        //数据配合使用过滤器：
+                //limitBy  限制几个
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+        },
+        methods:{
+            show:function () {
+                alert(1);
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="text" @keyup="show | debounce 2000">
+</div>
+</body>
+</html>

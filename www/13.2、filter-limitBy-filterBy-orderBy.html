@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//过滤器：
+        //vue提供过滤器：
+                //capitalize     uppercase       lowercase
+                //debounce   配合事件，延迟执行
+        //数据配合使用过滤器：
+                //limitBy  限制几个
+                //filterBy 过滤数据
+                //orderBy  排序    (1正序、-1倒序)
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            a:'',
+            arr:[1,2,3,4,5],
+            arr2:['width','height','background','orange']
+        },
+        methods:{
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+
+    <ul>
+        <li v-for="value in arr | limitBy 2">{{value}}</li>
+    </ul>
+    <ul>
+        <li v-for="value in arr | limitBy 2 1">{{value}}</li>
+    </ul>
+    <ul>
+        <li v-for="value in arr | limitBy 2 arr.length-2">{{value}}</li>
+    </ul>
+
+    <input type="text" v-model="a">
+    <ul>
+        <li v-for="value in arr2 | filterBy a">{{value}}</li>
+    </ul>
+    <ul>
+        <li v-for="value in arr2 | orderBy -1">{{value}}</li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+/*
+ng:$scope.$watch
+------------------
+计算属性的使用：
+        computed
+
+ */
+    window.onload=function(){
+        var vm=new Vue({
+            el:'#box',
+            data:{
+                a:1
+            },
+            computed:{
+                b:function () {  //b是属性
+                    return this.a+1;
+                }
+            }
+        });
+
+        //console.log(vm.a);
+        document.onclick=function () {
+            vm.a=101;
+        }
+    }
+</script>
+</head>
+<body>
+<div id="box">
+  a:{{a}}, b:{{b}}       <!-- a:1, b:2 -->   <!-- a:101, b:102 -->
+</div>
+
+</body>
+</html>

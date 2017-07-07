@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+</style>
+<script>
+/*
+vue组件  （元素指令 elementDirective :用处不大。）
+定义一个组件:
+1.全局组件
+var Aaa=Vue.extend({
+ template:'<h3>我是标题3</h3>'
+});
+
+Vue.component('aaa',Aaa);
+
+2.组件里面放数据:data必须是函数形式，必须返回一个json
+3.组件里面放事件:
+
+4.局部组件:放到某个组件内部
+*/
+
+//slot
+//vue-loader
+//vue-router
+window.onload=function(){
+    var Aaa=Vue.extend({   //继承
+        template:'<h3>{{msg}}</h3>',
+        data(){
+            return {
+                msg:'ddd'
+            }
+        }
+    });
+
+    //全局
+    //Vue.component('aaa',Aaa);
+
+    new Vue({
+        components:{  //局部
+            aaa:Aaa
+        }
+    }).$mount('#box');
+}
+</script>
+</head>
+<body>
+<div id="box">
+  <aaa></aaa>
+</div>
+
+</body>
+</html>

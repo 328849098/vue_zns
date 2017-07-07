@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+/*
+ vue1.0 生命周期  (2.0有改变)
+      钩子函数
+      created        ->   实例已经创建     也可以
+      beforeCompile  ->   编译之前
+      compiled       ->   编译之后
+      ready          ->   插入到文档中了    √
+
+
+      beforeDestroy  ->   销毁之前
+      destroyed      ->   销毁之后
+ */
+    window.onload=function(){
+        var vm=new Vue({
+            el:'#box',
+            data:{
+                msg:'welcome'
+            },
+            created:function () {
+                alert('实例已经创建');
+            },
+            beforeCompile:function () {
+                alert('编译之前');
+            },
+            compiled:function () {
+                alert('编译之后');
+            },
+            ready:function () {
+                alert('插入到文档中了');
+            },
+            beforeDestroy:function () {
+                alert('销毁之前');
+            },
+            destroyed:function () {
+                alert('销毁之后');
+            }
+        });
+
+        //点击页面销毁vue对象
+        document.onclick=function () {
+            vm.$destroy();
+
+        }
+    }
+</script>
+</head>
+<body>
+<div id="box">
+  {{msg}}
+</div>
+
+</body>
+</html>

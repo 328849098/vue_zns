@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+
+<script src="js/vue.min.js"></script>
+<link rel="stylesheet" href="css/animate.css">
+<style>
+#box{width:400px;margin:0 auto;}
+.div1{width:100px;height:100px;background:#f00;}
+</style>
+<script>
+/*
+https://daneden.github.io/animate.css/
+    bower install animate.css      下载
+*/
+window.onload=function(){
+    var vm=new Vue({
+        data:{
+            bSign:true
+        },
+        methods:{
+            toggle:function (){
+                this.bSign=!this.bSign;
+            }
+        },
+        transitions:{  //定义所有动画名称
+            bounce:{
+                enterClass:'zoomInLeft',
+                leaveClass:'zoomOutRight'
+            }
+        }
+    }).$mount('#box');
+}
+</script>
+</head>
+<body>
+<div id="box">
+  <input type="button" value="按钮" @click="toggle">
+  <div class="div1" class="animated" v-show="bSign" transition="bounce"></div>
+</div>
+
+</body>
+</html>

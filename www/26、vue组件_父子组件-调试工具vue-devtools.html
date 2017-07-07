@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+</style>
+<script>
+/*
+ vue-devtools -> 调试工具
+ https://github.com/vuejs/vue-devtools
+
+ 父子组件
+*/
+
+//slot
+//vue-loader
+//vue-router
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            a:'aaa'
+        },
+        components:{
+            'aaa':{
+                template:'<h2>我是aaa组件</h2><bbb></bbb>',
+                components:{
+                    'bbb':{
+                        template:'<h3>我是bbb组件</h3>'
+                    }
+                }
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+  <aaa></aaa>
+</div>
+
+</body>
+</html>

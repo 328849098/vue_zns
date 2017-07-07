@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.js"></script>
+<script>
+//$http
+
+//get
+//post
+//jsonp
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+        },
+        methods:{
+           post:function () {
+               this.$http.post('post.php',{
+                   a:1,
+                   b:2
+               },{
+                   emulateJSON:true
+               }).then(function (res) {
+                   alert(res.data);
+               },function (res) {
+                   alert(res.status);
+               })
+           }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮" @click="post()">
+</div>
+</body>
+</html>

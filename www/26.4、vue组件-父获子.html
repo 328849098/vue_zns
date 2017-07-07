@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+</style>
+<script>
+/*
+ 子级获取父级数据 props:[]
+
+ 父级获取子级数据:子组件把自己的数据，发送到父级
+                vm.$emit(事件名，数据)     子级发送
+                v-on                     父级接收
+*/
+
+//vm.dispatch(事件名，数据)    子级向父级发送数据
+//vm.broadcast(事件名，数据)   父级向子级广播数据
+//配合event:{}
+//2.0报废了
+
+
+//slot
+//vue-loader
+//vue-router
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            a:'aaa'
+        },
+        components:{
+            'aaa':{
+                data(){
+                    return {
+                        msg:111,
+                        msg2:'我是父组件的数据'
+                    }
+                },
+                template:'#aaa',
+                methods:{
+                    get(msg){
+                        //alert(1);    //1
+                        //alert(msg);  //我是子组件的数据
+                        this.msg=msg;
+                    }
+                },
+                components:{
+                    'bbb':{
+                        data(){
+                            return{
+                               a:'我是子组件的数据'
+                            }
+                        },
+                        template:'#bbb',
+                        methods:{
+                            send(){
+                                //alert('1');     //1
+                                this.$emit('child-msg',this.a);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+  <aaa></aaa>
+</div>
+
+<template id="aaa">
+  <span>我是父组件-{{msg}}</span>
+  <br>
+  <bbb @child-msg="get"></bbb>
+</template>
+
+
+
+<template id="bbb">
+  <span>我是子组件-{{a}}</span>
+  <input type="button" value="send" @click="send">
+</template>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<script>
+//过滤器：
+        //vue提供过滤器：
+                //capitalize     uppercase       lowercase
+                //debounce   配合事件，延迟执行
+        //数据配合使用过滤器：
+                //limitBy  限制几个
+                //filterBy 过滤数据
+                //orderBy  排序    (1正序、-1倒序)
+        //自定义过滤器：
+                //Vue.filter
+window.onload=function(){
+    Vue.filter('toDou',function (input,a,b) {
+        alert(a+','+b);                    //1,2
+        return input<10?'0'+input:input;   //09
+    });
+    new Vue({
+        el:'#box',
+        data:{
+            a:'9'
+        },
+        methods:{
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+    {{a | toDou 1 2}}
+</div>
+</body>
+</html>

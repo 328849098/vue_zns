@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/vue.min.js"></script>
+<style>
+</style>
+<script>
+/*
+ vue-devtools -> 调试工具
+ https://github.com/vuejs/vue-devtools
+
+ 父子组件
+ 默认情况下，子组件不能访问父组件的数据。（数据不能共享）
+
+ 组件数据传递:子组件获取父组件的数据 props
+*/
+
+//slot
+//vue-loader
+//vue-router
+window.onload=function(){
+    new Vue({
+        el:'#box',
+        data:{
+            a:'aaa'
+        },
+        components:{
+            'aaa':{
+                data(){
+                  return {
+                      msg2:'我是父组件的数据'
+                  }
+                },
+                template:'#aaa',
+                components:{
+                    'bbb':{
+                        /*
+                        props:{
+                            'm':String
+                        },
+                        */
+                        props:['m'],
+                        template:'<h3>我是bbb组件-{{m}}</h3>'
+                    }
+                }
+            }
+        }
+    });
+}
+</script>
+</head>
+<body>
+<div id="box">
+  <aaa></aaa>
+</div>
+
+<template id="aaa">
+  <h2>我是aaa组件-{{msg2}}</h2><bbb :m="msg2"></bbb>
+</template>
+</body>
+</html>
